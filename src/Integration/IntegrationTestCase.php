@@ -10,6 +10,11 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class IntegrationTestCase extends WebTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+    }
+
     protected function getKernel(): KernelInterface
     {
         if (null === static::$kernel || null === static::$kernel->getContainer()) {
