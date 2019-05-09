@@ -9,6 +9,8 @@
 
         <service id="test.EntityManagerInterface" alias="Doctrine\ORM\EntityManagerInterface" public="true"/>
 
+        <service id="Mysiar\TestBundle\Command\FixtureReload" class="Mysiar\TestBundle\Command\FixtureReload"/>
+
     </services>
 
 </container>
