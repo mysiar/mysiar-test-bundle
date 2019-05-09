@@ -30,7 +30,7 @@ class IntegrationTestCase extends WebTestCase
 
     protected function getEntityManager(): EntityManagerInterface
     {
-        return $this->getContainer()->get('doctrine.orm.default_entity_manager');
+        return $this->getContainer()->get('test.EntityManagerInterface');
     }
 
     protected static function ensureKernelShutdown(): void

@@ -7,6 +7,8 @@
     <services>
         <defaults public="false" autoconfigure="true" autowire="true"/>
 
+        <service id="test.EntityManagerInterface" alias="Doctrine\ORM\EntityManagerInterface" public="true"/>
+
     </services>
 
 </container>
