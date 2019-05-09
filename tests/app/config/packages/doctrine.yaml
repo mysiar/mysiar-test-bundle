@@ -1,0 +1,22 @@
+doctrine:
+    dbal:
+        default_connection: default
+        types:
+            uuid: Ramsey\Uuid\Doctrine\UuidType
+        connections:
+            default:
+                logging: false
+                url: '%env(resolve:DATABASE_URL)%'
+    orm:
+        default_entity_manager: default
+        entity_managers:
+            default:
+                naming_strategy: doctrine.orm.naming_strategy.underscore
+                query_cache_driver: array
+                metadata_cache_driver: array
+                mappings:
+                    MysiarTestBundle:
+                        dir: '%kernel.root_dir%/../Entity/'
+                        prefix: Mysiar\TestBundle\Tests\Entity\
+                        type: annotation
+                        is_bundle: false

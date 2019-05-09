@@ -1,0 +1,58 @@
+{
+    "name": "mysiar/test-bundle",
+    "description": "Test bundle",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Piotr Synowiec",
+            "email": "psynowiec@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "doctrine/data-fixtures": "^1.3",
+        "doctrine/doctrine-bundle": "^1.7",
+        "doctrine/orm": "^2.5",
+        "phpunit/phpunit": "^8.0",
+        "symfony/config": "^4.0",
+        "symfony/console": "^4.0",
+        "symfony/dependency-injection": "^4.0",
+        "symfony/dotenv": "^4.2",
+        "symfony/framework-bundle": "^4.0",
+        "symfony/http-kernel": "^4.0"
+
+    },
+    "require-dev": {
+        "jakub-onderka/php-parallel-lint": "^1.0",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/var-dumper": "^4.2",
+        "ramsey/uuid-doctrine": "^1.4",
+        "slevomat/coding-standard": "^5.0",
+        "symfony/yaml": "^4.2"
+    },
+    "autoload": {
+        "psr-4": { "Mysiar\\TestBundle\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Mysiar\\TestBundle\\Tests\\": "tests/" },
+        "classmap": ["tests/app/Kernel.php"]
+    },
+    "scripts": {
+        "phpcs": [
+            "phpcs --standard=./ruleset.xml --extensions=php"
+        ],
+        "phpcbf": [
+            "phpcbf --standard=./ruleset.xml --extensions=php"
+        ],
+        "php-lint": "parallel-lint --exclude tests/app --exclude vendor .",
+        "cache-clear": "rm -rf tests/app/cache/",
+        "phpunit": "export DATABASE_URL=sqlite:///%kernel.cache_dir%/mysiar.test.bundle.test.db && phpunit --no-coverage",
+        "stats": "phpunit --no-coverage tests/Integration/StatsTest.php",
+        "test": [
+            "@php-lint",
+            "@phpcs",
+            "@cache-clear",
+            "@phpunit"
+        ]
+    }
+}

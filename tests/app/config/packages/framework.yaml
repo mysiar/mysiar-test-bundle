@@ -1,0 +1,5 @@
+framework:
+    secret: example_secret_code
+    router:
+        strict_requirements: ~
+    test: ~
