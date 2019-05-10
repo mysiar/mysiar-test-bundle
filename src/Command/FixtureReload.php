@@ -53,6 +53,7 @@ class FixtureReload extends Command
             new InputOption(self::OPT_FORCE, 'f', InputOption::VALUE_OPTIONAL, 'Force database erase', false)
         ]);
     }
+
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if (!$this->executionConfirmed($input, $output)) {

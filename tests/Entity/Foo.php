@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Mysiar\TestBundle\Tests\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @ORM\Entity()
@@ -11,13 +12,24 @@ use Doctrine\ORM\Mapping as ORM;
 class Foo
 {
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue()
+     * @ORM\Column(type="uuid")
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      * @ORM\Id()
      *
-     * @var int
+     * @var Uuid
      */
-    private $id;
+    protected $id;
+
+
+//    /**
+//     * @ORM\Column(type="integer")
+//     * @ORM\GeneratedValue()
+//     * @ORM\Id()
+//     *
+//     * @var int
+//     */
+//    private $id;
 
     /**
      * @ORM\Column()
@@ -31,10 +43,7 @@ class Foo
      */
     private $description;
 
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function getId(): Uuid
     {
         return $this->id;
     }
