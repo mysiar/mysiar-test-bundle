@@ -12,7 +12,7 @@ class DbList extends Command
 {
     public const ENTITY_LENGTH = 70;
     public const COUNT_LENGTH = 10;
-    public const LINE_FORMAT = '| %-'. self::ENTITY_LENGTH . 's | %' . self::COUNT_LENGTH . 's |';
+    public const LINE_FORMAT = '| %-' . self::ENTITY_LENGTH . 's | %' . self::COUNT_LENGTH . 's |';
     // phpcs:disable
     public const LINE_HORIZONTAL = '---------------------------------------------------------------------------------------';
     // phpcs:enable
