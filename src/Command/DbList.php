@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Mysiar\TestBundle\Command;
 
+use Doctrine\DBAL\Schema\Table;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,12 +11,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DbList extends Command
 {
-    public const ENTITY_LENGTH = 70;
+    public const ENTITY_LENGTH = 100;
     public const COUNT_LENGTH = 10;
     public const LINE_FORMAT = '| %-' . self::ENTITY_LENGTH . 's | %' . self::COUNT_LENGTH . 's |';
-    // phpcs:disable
-    public const LINE_HORIZONTAL = '---------------------------------------------------------------------------------------';
-    // phpcs:enable
+    public const LINE_HORIZONTAL_LENGTH = 117;
 
     /** @var EntityManagerInterface */
     private $em;
@@ -29,16 +28,16 @@ class DbList extends Command
     protected function configure(): void
     {
         $this
-            ->setName('mysiar:db:list')
-            ->setDescription('List all entities and their record counts');
+            ->setName('h88:db:list')
+            ->setDescription('List all entities and records count');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
 
-        $output->writeln(self::LINE_HORIZONTAL);
+        $output->writeln(str_repeat('-', self::LINE_HORIZONTAL_LENGTH));
         $output->writeln(sprintf(self::LINE_FORMAT, 'Entity', 'Count'));
-        $output->writeln(self::LINE_HORIZONTAL);
+        $output->writeln(str_repeat('-', self::LINE_HORIZONTAL_LENGTH));
         // phpcs:enable
         foreach ($this->getEntityList() as $entity => $count) {
             $line = sprintf(
@@ -48,7 +47,7 @@ class DbList extends Command
             );
             $output->writeln($line);
         }
-        $output->writeln(self::LINE_HORIZONTAL);
+        $output->writeln(str_repeat('-', self::LINE_HORIZONTAL_LENGTH));
         return 0;
     }
 
@@ -57,9 +56,15 @@ class DbList extends Command
         $entities = [];
         $metas = $this->em->getMetadataFactory()->getAllMetadata();
 
+        $tables = $this->getTableNames();
+
         foreach ($metas as $meta) {
             $name = $meta->getName();
-            $entities[$name] = $this->countEntityRecords($name);
+            $table = $this->em->getClassMetadata($name)->getTableName();
+
+            if (in_array($table, $tables)) {
+                $entities[$name] = $this->countEntityRecords($name);
+            }
         }
 
         return $entities;
@@ -91,5 +96,18 @@ class DbList extends Command
         }
 
         return $text;
+    }
+
+    private function getTableNames(): array
+    {
+        $simpleTableArray = [];
+        $sm = $this->em->getConnection()->getSchemaManager();
+        $tables = $sm->listTables();
+        /** @var Table $table */
+        foreach ($tables as $table) {
+            $simpleTableArray[] = $table->getName();
+        }
+
+        return $simpleTableArray;
     }
 }
