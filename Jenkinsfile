@@ -78,6 +78,9 @@ pipeline {
         gitlabBuilds(builds: ['Clean & install dependencies', 'Code linting', 'Coding standard', 'Test'])
     }
     triggers {
-        gitlab(triggerOnPush: true, triggerOnMergeRequest: true, branchFilterType: 'All')
+        gitlab(
+            triggerOnPush: true,
+            triggerOnMergeRequest: true,
+            branchFilterType: 'All')
     }
 }
