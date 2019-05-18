@@ -35,7 +35,7 @@ class IntegrationTestCase extends WebTestCase
 
     protected function getEntityManager(): EntityManagerInterface
     {
-        return $this->getContainer()->get('test.EntityManagerInterface');
+        return $this->getContainer()->get('mysiar_test_bundle_entity_manager_interface');
     }
 
     protected static function ensureKernelShutdown(): void

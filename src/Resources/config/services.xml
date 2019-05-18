@@ -7,11 +7,9 @@
     <services>
         <defaults public="false" autoconfigure="true" autowire="true"/>
 
-        <service id="test.EntityManagerInterface" alias="Doctrine\ORM\EntityManagerInterface" public="true"/>
+        <service id="mysiar_test_bundle_entity_manager_interface" alias="Doctrine\ORM\EntityManagerInterface" public="true"/>
 
         <prototype namespace="Mysiar\TestBundle\Command\" resource="../../Command/*" />
-
-<!--        <service id="Mysiar\TestBundle\Command\FixtureReload" class="Mysiar\TestBundle\Command\FixtureReload"/>-->
 
     </services>
 

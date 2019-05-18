@@ -17,10 +17,15 @@ class FooFixture extends Fixture
      */
     public function load(ObjectManager $manager)
     {
-        $f1 = new Foo();
-        $f1->setName('Foo 1');
-        $f1->setDescription('Foo 1 fixture');
-        $manager->persist($f1);
+        $f = new Foo();
+        $f->setName('Foo 1');
+        $f->setDescription('Foo 1 fixture');
+        $manager->persist($f);
+
+        $f = new Foo();
+        $f->setName('Foo 2');
+        $f->setDescription('Foo 2 fixture');
+        $manager->persist($f);
 
         $manager->flush();
     }

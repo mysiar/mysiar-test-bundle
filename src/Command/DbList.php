@@ -28,7 +28,7 @@ class DbList extends Command
     protected function configure(): void
     {
         $this
-            ->setName('h88:db:list')
+            ->setName('mysiar:db:list')
             ->setDescription('List all entities and records count');
     }
 
