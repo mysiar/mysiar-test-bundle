@@ -9,13 +9,7 @@ use Mysiar\TestBundle\Tests\Entity\Foo;
 
 class FooFixture extends Fixture
 {
-
-    /**
-     * Load data fixtures with the passed EntityManager
-     *
-     * @param ObjectManager $manager
-     */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $f = new Foo();
         $f->setName('Foo 1');
