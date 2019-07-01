@@ -27,7 +27,7 @@
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "^1.0",
         "ramsey/uuid-doctrine": "^1.4",
-        "slevomat/coding-standard": "^5.0",
+        "mysiar/coding-standard": "^1.0",
         "symfony/monolog-bundle": "^3.0"
     },
     "autoload": {

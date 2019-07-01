@@ -51,6 +51,9 @@ class DbList extends Command
         return 0;
     }
 
+    /**
+     * @return string[]
+     */
     private function getEntityList(): array
     {
         $entities = [];
@@ -98,6 +101,9 @@ class DbList extends Command
         return $text;
     }
 
+    /**
+     * @return string[]
+     */
     private function getTableNames(): array
     {
         $simpleTableArray = [];
