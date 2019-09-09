@@ -1,6 +1,7 @@
 {
     "name": "mysiar/test-bundle",
     "description": "Test bundle",
+    "license": "MIT",
     "type": "symfony-bundle",
     "authors": [
         {
