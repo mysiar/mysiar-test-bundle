@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Mysiar\TestBundle\Tests\Fixture;
+namespace Mysiar\TestBundle\Tests\Fixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;

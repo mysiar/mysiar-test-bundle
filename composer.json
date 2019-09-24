@@ -47,9 +47,15 @@
         ],
         "php-lint": "parallel-lint --exclude tests/app --exclude vendor .",
         "cache-clear": "rm -rf tests/app/cache/",
-        "phpunit": "export DATABASE_URL=sqlite:///%kernel.cache_dir%/mysiar.test.bundle.test.db && phpunit --no-coverage",
+        "phpunit": "phpunit --no-coverage",
         "stats": "phpunit --no-coverage tests/Integration/StatsTest.php",
+        "fixtures-reload": [
+            "./tests/app/bin/console d:s:d --force",
+            "./tests/app/bin/console d:s:c",
+            "./tests/app/bin/console mysiar:fixtures:load tests/Fixtures/ --force -q"
+        ],
         "test": [
+            "@fixtures-reload",
             "@php-lint",
             "@phpcs",
             "@cache-clear",
