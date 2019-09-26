@@ -6,5 +6,7 @@
     <services>
         <defaults public="true" autowire="true"/>
 
+        <service id="test.fixture_loader" alias="Mysiar\TestBundle\Helper\FixtureLoader" />
+
     </services>
 </container>

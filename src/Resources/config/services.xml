@@ -10,6 +10,8 @@
         <service id="mysiar_test_bundle_entity_manager_interface" alias="Doctrine\ORM\EntityManagerInterface" public="true"/>
 
         <prototype namespace="Mysiar\TestBundle\Command\" resource="../../Command/*" />
+        <service id="Doctrine\Common\DataFixtures\Executor\ORMExecutor" class="Doctrine\Common\DataFixtures\Executor\ORMExecutor"/>
+        <prototype namespace="Mysiar\TestBundle\Helper\" resource="../../Helper/*" />
 
     </services>
 
