@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Mysiar\TestBundle\Command;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Mysiar\TestBundle\Helper\FixtureLoader;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;

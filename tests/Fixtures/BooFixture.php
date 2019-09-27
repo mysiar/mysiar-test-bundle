@@ -6,7 +6,6 @@ namespace Mysiar\TestBundle\Tests\Fixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Mysiar\TestBundle\Tests\Entity\Boo;
-use Mysiar\TestBundle\Tests\Entity\Foo;
 
 class BooFixture extends Fixture
 {
