@@ -55,7 +55,7 @@ class FixtureLoader
     {
         $loader = $this->multiFixtureLoader($paths);
         $purger = new ORMPurger($this->executor->getObjectManager());
-        $purger->setPurgeMode(ORMPurger::PURGE_MODE_DELETE);
+        $purger->setPurgeMode(ORMPurger::PURGE_MODE_TRUNCATE);
         $this->executor->setPurger($purger);
         $this->executor->execute($loader->getFixtures());
     }
