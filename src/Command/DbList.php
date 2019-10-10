@@ -74,10 +74,10 @@ class DbList extends Command
             $name = $meta->getName();
             $table = $this->em->getClassMetadata($name)->getTableName();
 
-            $count = $this->countEntityRecords($name);
-            if (true === $zero && 0 === $count) {
-            } else {
-                if (in_array($table, $tables)) {
+            if (in_array($table, $tables)) {
+                $count = $this->countEntityRecords($name);
+                if (true === $zero && 0 === $count) {
+                } else {
                     $entities[$name] = $count;
                 }
             }
@@ -93,7 +93,7 @@ class DbList extends Command
      */
     private function countEntityRecords(string $className)
     {
-        return current($this->em->createQueryBuilder()
+        return (int)current($this->em->createQueryBuilder()
             ->select('count(c.id)')
             ->from($className, 'c')
             ->getQuery()
